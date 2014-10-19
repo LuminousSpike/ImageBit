@@ -91,8 +91,6 @@ namespace ImageBit
             else
             {
                 Worker.CancelAsync();
-                Converting = false;
-                ButtonConvert.Content = "Convert";
             }
         }
 
@@ -104,6 +102,9 @@ namespace ImageBit
             worker.ProgressChanged -= worker_ProgressChanged;
             worker.DoWork -= worker_DoWork;
             worker.RunWorkerCompleted -= worker_RunWorkerCompleted;
+
+            Converting = false;
+            ButtonConvert.Content = "Convert";
         }
 
         void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
