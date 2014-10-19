@@ -98,6 +98,14 @@ namespace ImageBit
         {
             BackgroundWorker worker = sender as BackgroundWorker;
 
+            if (e.Cancelled)
+            {
+                WriteToListBoxLog("Job has been cancelled!");
+            }
+            else
+            {
+                WriteToListBoxLog("Job has been completed!");
+            }
             // We need to remove the events, otherwise they will be repeated on the next run of the program.
             worker.ProgressChanged -= worker_ProgressChanged;
             worker.DoWork -= worker_DoWork;
@@ -112,7 +120,13 @@ namespace ImageBit
             ProgressBarConvert.Value = e.ProgressPercentage;
             string[] userstate = e.UserState as string[];
 
-            ListBoxLog.Items.Add("Converting Image (" + userstate[0] + " / " + userstate[1] + "): " + userstate[2]);
+            WriteToListBoxLog("Converting Image (" + userstate[0] + " / " + userstate[1] + "): " + userstate[2]);
+            
+        }
+
+        void WriteToListBoxLog(string message)
+        {
+            ListBoxLog.Items.Add(message);
             ListBoxLog.ScrollIntoView(ListBoxLog.Items[ListBoxLog.Items.Count - 1]);
         }
 
