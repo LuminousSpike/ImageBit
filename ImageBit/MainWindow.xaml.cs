@@ -30,6 +30,11 @@ namespace ImageBit
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Open folder button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonFolderInputOpen_Click(object sender, RoutedEventArgs e)
         {
             if (FolderInput.ShowDialog() == true)
@@ -38,6 +43,11 @@ namespace ImageBit
             }
         }
 
+        /// <summary>
+        /// Output folder button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonFolderOutputOpen_Click(object sender, RoutedEventArgs e)
         {
             if (FolderOutput.ShowDialog() == true)
@@ -56,7 +66,11 @@ namespace ImageBit
             CompletedFiles = 0;
         }
 
-
+       /// <summary>
+       /// Begins the conversion process when the button is pressed
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         private void ButtonConvert_Click(object sender, RoutedEventArgs e)
         {
             if (!Converting)
@@ -94,6 +108,11 @@ namespace ImageBit
             }
         }
 
+        /// <summary>
+        /// Triggered on the completion of a job.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -115,6 +134,11 @@ namespace ImageBit
             ButtonConvert.Content = "Convert";
         }
 
+        /// <summary>
+        /// Update the progress bar when progress changes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             ProgressBarConvert.Value = e.ProgressPercentage;
@@ -124,12 +148,21 @@ namespace ImageBit
             
         }
 
+        /// <summary>
+        /// Convenience method for writing to log
+        /// </summary>
+        /// <param name="message"></param>
         void WriteToListBoxLog(string message)
         {
             ListBoxLog.Items.Add(message);
             ListBoxLog.ScrollIntoView(ListBoxLog.Items[ListBoxLog.Items.Count - 1]);
         }
 
+        /// <summary>
+        /// Start a new worker
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -213,6 +246,11 @@ namespace ImageBit
             }
         }
 
+        /// <summary>
+        /// Executed when a converter process exits
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void converter_Exited(object sender, System.EventArgs e)
         {
             RunningProcesses--;
