@@ -62,7 +62,7 @@ namespace ImageBit.Classes.Encoder
                 string file = files[index];
 
                 // Set output path to files path.
-                if (FolderOutputPath == null)
+                if (FolderOutputPath == null || FolderOutputPath == "" || !Directory.Exists(FolderOutputPath))
                 {
                     FolderOutputPath = Path.GetDirectoryName(file);
                 }
