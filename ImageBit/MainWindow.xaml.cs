@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System;
+using ImageBit.Classes;
 using ImageBit.Classes.Encoder;
 
 namespace ImageBit
@@ -101,7 +102,7 @@ namespace ImageBit
 
             Reset();
             string[] files = Directory.GetFiles(TextBoxFolderInput.Text);
-            files = TruncateFiles(files);
+            files = ImageBitHelper.TruncateFiles(files);
 
             FolderInputPath = TextBoxFolderInput.Text;
             FolderOutputPath = TextBoxFolderOutput.Text;
@@ -214,26 +215,6 @@ namespace ImageBit
             EncoderWebP encoder = new EncoderWebP(FolderOutputPath);
 
             encoder.ConvertToWebP(sender, files, e);
-        }
-
-        /// <summary>
-        /// Gets rid of the unwanted files, such as those which are not images.
-        /// </summary>
-        /// <param name="files"></param>
-        /// <returns>An array of wanted filenames.</returns>
-        private string[] TruncateFiles(string[] files)
-        {
-            List<string> filesList = new List<string>();
-
-            foreach (string file in files)
-            {
-                if (file.ToLower().Contains(".png"))
-                {
-                    filesList.Add(file);
-                }
-            }
-
-            return filesList.ToArray();
         }
     }
 }
