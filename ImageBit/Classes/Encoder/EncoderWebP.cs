@@ -65,6 +65,12 @@ namespace ImageBit.Classes.Encoder
             {
                 string file = files[index];
 
+                // Set output path to files path.
+                if (FolderOutputPath == null)
+                {
+                    FolderOutputPath = Path.GetDirectoryName(file);
+                }
+
                 string exePath = Path.GetFullPath(@"Encoders\cwebp.exe");
                 string output = FolderOutputPath + @"\" + Path.GetFileNameWithoutExtension(file) + ".webp";
                 string args = "-lossless " + '"' + file + '"' + " -o " + '"' + output + '"';
