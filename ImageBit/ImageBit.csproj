@@ -68,7 +68,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Encoder\EncoderWebP.cs" />
-    <Compile Include="Classes\ImageBit.cs" />
+    <Compile Include="Classes\ImageBitHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

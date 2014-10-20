@@ -1,12 +1,10 @@
-﻿using System.Windows;
-using Ookii.Dialogs.Wpf;
-using System.IO;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System;
-using ImageBit.Classes;
+﻿using ImageBit.Classes;
 using ImageBit.Classes.Encoder;
+using Ookii.Dialogs.Wpf;
+using System;
+using System.ComponentModel;
+using System.IO;
+using System.Windows;
 
 namespace ImageBit
 {
